@@ -31,5 +31,29 @@ Dichiariamo chi ha vinto.
 var userChoice = prompt("pari o dispari?", "pari");
 var userNumber = parseInt(prompt("Scegli un numero da 1 a 5"));
 
+//Stampare risultato
+document.getElementById("result").innerText = result(userNumber, userChoice);
+
+//Dichiarare funzione
+function result(number, choice) {
+    
+    var randomNumber = Math.floor(Math.random() * 5) + 1;
+    var sum = randomNumber + number;
+    var match;
+
+    if (sum % 2 === 0) {
+        match = "pari";
+    } else {
+        match = "dispari";
+    }
+
+    if (choice === match) {
+        return "Il numero generato dal computer è " + randomNumber + ". Hai vinto!";
+    } else {
+        return "Il numero generato dal computer è " + randomNumber + ". Hai perso.";
+    }  
+}
+
+
 
 
