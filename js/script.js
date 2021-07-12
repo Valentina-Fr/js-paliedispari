@@ -35,31 +35,37 @@ Dichiariamo chi ha vinto.
 
 //Chiedere all'utente di scegliere
 var userChoice = prompt("pari o dispari?", "pari");
-var userNumber = parseInt(prompt("Scegli un numero da 1 a 5"));
+var userNumber = parseInt(prompt("Scegli un numero da 1 a 5", "1"));
 
-//Stampare risultato
-document.getElementById("result").innerText = result(userNumber, userChoice);
+//Generare numero random
+var cpuNumber = randomNumber();
+var sum = cpuNumber + userNumber;
 
-//Dichiarare funzione
-function result(number, choice) {
-    
-    var randomNumber = Math.floor(Math.random() * 5) + 1;
-    var sum = randomNumber + number;
-    var match;
+//Stabilire se la somma è pari o dispari
+var result = evenOdd(sum);
 
-    if (sum % 2 === 0) {
-        match = "pari";
-    } else {
-        match = "dispari";
-    }
+var message = "Il numero generato dal computer è " + cpuNumber + ". La somma dei due numeri è " + result;
+var resultMessage; 
 
-    if (choice === match) {
-        return "Il numero generato dal computer è " + randomNumber + ". Hai vinto!";
-    } else {
-        return "Il numero generato dal computer è " + randomNumber + ". Hai perso.";
-    }  
+//Dichiarare chi vince
+if (result === userChoice){
+    resultMessage = ". Hai vinto!";
+} else {
+    resultMessage = ". Non hai vinto.";
 }
 
+document.getElementById("result").innerText = message + resultMessage;
 
+//Funzione numero random da 1 a 5
+function randomNumber(){
+   return Math.floor(Math.random() * 5) + 1;
+}
 
-
+//Funzione per stabilire se pari o dispari
+function evenOdd(num) {
+    if (num % 2 === 0) {
+        return  "pari";
+    } else {
+        return "dispari";
+    }
+}
