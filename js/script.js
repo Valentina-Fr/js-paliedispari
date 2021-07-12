@@ -10,12 +10,18 @@ document.getElementById("palindrome").innerText = userWord;
 
 //Creare funzione
 function isPalindrome(word) {
-    var backward = word.split("").reverse().join("");
-    var result = "La parola non è palindroma";
-    if (word === backward) {
-        result = "La parola è palindroma";
+    var wordArray = word.split("");
+    var backwardArray = [];
+    for (var i = wordArray.length - 1; i >= 0; i--) {
+        backwardArray.push(wordArray[i]);
+    }
+    for (var i = 0; i < wordArray.length; i++) {
+        if (wordArray [i] == backwardArray[i]) {
+        return "La parola è palindroma";
+        } else {
+        return "La parola non è palindroma";
+        }
     } 
-    return result;
 }
 
 /*  
